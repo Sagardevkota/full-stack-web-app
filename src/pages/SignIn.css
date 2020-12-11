@@ -1,0 +1,16 @@
+
+.btn {
+    border: none;
+    background-color: royalblue;
+    padding: 14px 110px;
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+    display: inline-block;
+
+}
+
+.btn:hover{
+    background-color: mediumvioletred;
+
+}
