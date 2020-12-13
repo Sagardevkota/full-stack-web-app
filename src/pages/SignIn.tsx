@@ -7,7 +7,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import {Alert} from "@material-ui/lab";
 import {UserAPI} from "../api/UserAPI";
 import {JsonResponse} from "../models/JsonResponse";
-
+import {Link, Redirect} from 'react-router-dom';
 
 export const SignIn =() =>{
 
@@ -30,8 +30,11 @@ export const SignIn =() =>{
 
         userAPI.login(userName,password,(Res:JsonResponse)=>{
             console.log(Res);
-            if (Res.message === "Login successfull")
+            if (Res.message === "Login successfull"){
                 setsignInSuccess(true);
+                localStorage.setItem("authenticated","true");
+            }
+
             else
                 setSignInFailure(true);
         })
@@ -39,8 +42,10 @@ export const SignIn =() =>{
 
         return (<div>
 
+
             {signInSuccess?(<Alert severity="success">
-                Logged In Successfully — <strong>All Set!</strong>
+                Logged In Successfully — <Link to={"home"}> <strong>Go to home!</strong> </Link>
+                <Redirect to={"/home"} />
             </Alert>):null}
 
             {signInFailure?(<Alert severity="error">
@@ -50,9 +55,13 @@ export const SignIn =() =>{
             <br/><br/>
 
         <header>
-            <h1>Sign In</h1>
+            <h1 className={"h1"}>Sign In</h1>
         </header>
             <br/>
+
+
+
+
 
         <form noValidate autoComplete="off">
             <TextField id="standard-basic" label="Enter your username"
@@ -79,11 +88,21 @@ export const SignIn =() =>{
                            ),
                        }}
 
-            /> <br/><br/>
+            />
+            <br/>
+                <br/>
+
             <button className="btn" color="primary"
                     disabled={!validateInput()}
                     onClick={(event)=>handleClick(event)} >Login</button>
 
+            <Link to={"register"}>
+            <p className={"p"}>New here ? Click here to register </p>
+            </Link>
+
+            <Link to={"posts"}>
+                Go to posts
+            </Link>
         </form>
 
 

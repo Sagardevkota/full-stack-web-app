@@ -1,0 +1,11 @@
+.root{
+    height: 400px;
+    width: 400px;
+    margin: auto;
+}
+
+.root:hover{
+
+    background-color: white;
+    color: inherit;
+}
