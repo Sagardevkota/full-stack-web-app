@@ -9,7 +9,11 @@ import {UserAPI} from "../api/UserAPI";
 import {JsonResponse} from "../models/JsonResponse";
 import {Link, Redirect} from 'react-router-dom';
 
+
+
+
 export const SignIn =() =>{
+
 
     const [userName,setUserName] = useState("");
     const [password,setPassword] = useState("");
@@ -19,6 +23,8 @@ export const SignIn =() =>{
 
 
     function validateInput(){
+
+
         const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         return userName.length >5 &&re.test(String(userName).toLowerCase()) && password.length >5;
@@ -40,10 +46,12 @@ export const SignIn =() =>{
         })
     }
 
-        return (<div>
+        return (
 
 
-            {signInSuccess?(<Alert severity="success">
+
+            <div >
+                {signInSuccess?(<Alert severity="success">
                 Logged In Successfully — <Link to={"home"}> <strong>Go to home!</strong> </Link>
                 <Redirect to={"/home"} />
             </Alert>):null}
@@ -106,6 +114,10 @@ export const SignIn =() =>{
         </form>
 
 
-    </div>)
+
+    </div>
+                )
+
+
 
 }
